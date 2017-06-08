@@ -28,6 +28,10 @@
         <module>shopcart</module>
         <module>stock</module>
         <module>score</module>
+        <module>config-microservice</module>
+        <module>discovery-microservice</module>
+        <module>api-gateway-microservice</module>
+        <module>monitoring-microservice</module>
     </modules>
 
 
