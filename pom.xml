@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <description>用户信息服务</description>
+
+    <groupId>com.hikaru</groupId>
+    <artifactId>shop</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>sms</module>
+        <module>product</module>
+        <module>user</module>
+        <module>auth</module>
+        <module>common</module>
+        <module>custom</module>
+        <module>order</module>
+        <module>pay</module>
+        <module>act</module>
+        <module>message</module>
+        <module>community</module>
+        <module>report</module>
+        <module>search</module>
+        <module>cms</module>
+        <module>shopcart</module>
+        <module>stock</module>
+        <module>score</module>
+    </modules>
+
+
+</project>
