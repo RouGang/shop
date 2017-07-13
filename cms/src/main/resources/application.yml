@@ -1,0 +1,57 @@
+server:
+  port: 8884
+
+eureka:
+  instance:
+     prefer-ip-address: false
+     lease-expiration-duration-in-seconds: 30
+     lease-renewal-interval-in-seconds: 10
+     #metadata-map:
+     #  cluster: ${spring.application.name}
+  client:
+    serviceUrl:
+      defaultZone:  http://eureka1:8761/eureka/,http://eureka2:8762/eureka/
+
+feign:
+   httpclient:
+       enabled: true
+
+ribbon:
+  OkToRetryOnAllOperations: false
+  MaxAutoRetriesNextServer: 1
+  MaxAutoRetries: 0
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+
+#hystrix:
+#  threadpool:
+#    default:
+#      coreSize: 8
+#      maxQueueSize: 100
+#      queueSizeRejectionThreshold: 90
+#  command:
+#    default:
+#      execution:
+#        timeout:
+#          enabled: true
+#        isolation:
+#          strategy: SEMAPHORE
+#          semaphore:
+#            maxConcurrentRequests: 1000
+#          thread:
+#            timeoutInMilliseconds: 10000
+#  config:
+#    stream:
+#      maxConcurrentConnections: 50
+
+sample:
+  zipkin:
+    enabled: false
+    base-url: http://localhost:9411
+
+spring:
+    boot:
+      admin:
+        url: http://localhost:8080
+
+

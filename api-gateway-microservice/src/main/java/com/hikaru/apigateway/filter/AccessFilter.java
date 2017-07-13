@@ -1,13 +1,21 @@
 package com.hikaru.apigateway.filter;
 
-import com.sun.xml.internal.ws.client.RequestContext;
+import com.google.common.base.Strings;
+import com.netflix.zuul.ZuulFilter;
+import com.netflix.zuul.context.RequestContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Hikaru on 17/6/8.
  */
-public class AccessFilter extends ZuulFilter{
+public class AccessFilter extends ZuulFilter {
 
-    private Logger logger = Logger.getLogger(AccessFilter.class);
+    private Logger logger = LoggerFactory.getLogger(AccessFilter.class);
 
     /**
      * filterType：返回一个字符串代表过滤器的类型，在zuul中定义了四种不同生命周期的过滤器类型，具体如下：
@@ -61,9 +69,10 @@ public class AccessFilter extends ZuulFilter{
             }
 
             //校验token
-            JWTVerifier verifier = new JWTVerifier("57e3ee14b1684858861963212cab40b8");
+           // JWTVerifier verifier = new JWTVerifier("57e3ee14b1684858861963212cab40b8");
             try {
-                Map<String, Object> claim =  verifier.verify(token);
+                Map<String, Object> claim = new HashMap<String, Object>();
+                        //verifier.verify(token);
                 //验证通过
                 logger.info(String.format("%s请求%s接口(Token Valid Success).",
                         claim.get("un").toString(),
@@ -87,7 +96,7 @@ public class AccessFilter extends ZuulFilter{
         ctx.setSendZuulResponse(false);
         ctx.setResponseStatusCode(statusCode);
         if (!Strings.isNullOrEmpty(body)){
-            ctx.setResponseBody(AKResult.builder().fail().errMsg(body).build());
+          //  ctx.setResponseBody(AKResult.builder().fail().errMsg(body).build());
         }
     }
 }
